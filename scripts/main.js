@@ -22,3 +22,14 @@ function getNameFromAuth() {
     });
 }
 getNameFromAuth(); //run the function
+
+
+function readQuote(day){
+    db.collection("quotes").doc(day).onSnapshot(dayInfo =>{
+        console.log(dayInfo.data())
+        quoteOfTheDay = dayInfo.data().quote;
+        document.getElementById("quote-goes-here").innerHTML= quoteOfTheDay;
+    })
+}
+
+readQuote("tuesday")
